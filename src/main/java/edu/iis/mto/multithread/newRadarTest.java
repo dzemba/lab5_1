@@ -5,11 +5,19 @@ import static org.mockito.Mockito.verify;
 
 import java.util.concurrent.Executor;
 
+import org.junit.Rule;
 import org.junit.Test;
+
+import edu.iis.mto.multithread.powtarzalnosc.Repeat;
+
 
 public class newRadarTest {
 
+	@Rule
+	public powtarzalnosc repeatRule = new powtarzalnosc();
+	
 	@Test
+	@Repeat(times = 1000)
 	public void launchPatriotOnceWhenNoticesAScudMissle() {
 		PatriotBattery batteryMock = mock(PatriotBattery.class);
 		newRadar radar = new newRadar(batteryMock);
